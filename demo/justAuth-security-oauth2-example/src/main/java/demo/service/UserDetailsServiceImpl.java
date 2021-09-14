@@ -154,7 +154,6 @@ public class UserDetailsServiceImpl implements UmsUserDetailsService {
         return user;
     }
 
-    @Override
     @NonNull
     public UserDetails registerUser(@NonNull String mobile, Map<String, String> otherParamMap) throws RegisterUserFailureException {
 

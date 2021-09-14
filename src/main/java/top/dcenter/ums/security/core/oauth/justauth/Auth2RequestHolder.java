@@ -345,7 +345,7 @@ public final class Auth2RequestHolder implements InitializingBean, ApplicationCo
         //noinspection AlibabaSwitchStatement
         switch ((AuthDefaultSource) source) {
             case CODING:
-                config.setCodingGroupName(auth2Properties.getCoding().getCodingGroupName());
+                config.setDomainPrefix(auth2Properties.getCoding().getCodingGroupName());
                 break;
             case ALIPAY:
                 BaseAuth2Properties alipay = auth2Properties.getAlipay();

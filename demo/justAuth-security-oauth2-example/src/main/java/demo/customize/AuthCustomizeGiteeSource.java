@@ -23,6 +23,7 @@
 package demo.customize;
 
 import me.zhyd.oauth.config.AuthDefaultSource;
+import me.zhyd.oauth.request.AuthDefaultRequest;
 import org.springframework.stereotype.Component;
 import top.dcenter.ums.security.core.oauth.justauth.request.AuthCustomizeRequest;
 import top.dcenter.ums.security.core.oauth.justauth.source.AuthCustomizeSource;
@@ -53,6 +54,21 @@ public class AuthCustomizeGiteeSource extends AuthCustomizeSource {
     @Override
     public String userInfo() {
         return "https://gitee.com/api/v5/user";
+    }
+
+    @Override
+    public String revoke() {
+        return super.revoke();
+    }
+
+    @Override
+    public String refresh() {
+        return super.refresh();
+    }
+
+    @Override
+    public Class<? extends AuthDefaultRequest> getTargetClass() {
+        return AuthCustomizeGiteeRequest.class;
     }
 
     @Override

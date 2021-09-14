@@ -71,6 +71,11 @@ public class Auth2Properties {
      * 字段名称与其所代表的第三方的 providerId 相同.
      */
     @NestedConfigurationProperty
+    private BaseAuth2Properties dingtalkAccount;
+    /**
+     * 字段名称与其所代表的第三方的 providerId 相同.
+     */
+    @NestedConfigurationProperty
     private BaseAuth2Properties baidu;
     /**
      * 字段名称与其所代表的第三方的 providerId 相同.
