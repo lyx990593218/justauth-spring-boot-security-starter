@@ -39,7 +39,7 @@ import java.util.List;
 @SuppressWarnings("jol")
 @Getter
 @Setter
-public class BaseAuth2Properties {
+public class BaseAuth2Properties extends BaseAuth2UrlProperties {
 
     private String clientId;
     private String clientSecret;

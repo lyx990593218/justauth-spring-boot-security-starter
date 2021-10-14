@@ -6,7 +6,7 @@
 
     <groupId>top.dcenter</groupId>
     <artifactId>justAuth-spring-security-starter</artifactId>
-    <version>1.2.0</version>
+    <version>1.1.28-scp</version>
 
     <packaging>jar</packaging>
     <name>justAuth-spring-security-starter</name>
@@ -18,6 +18,7 @@
         4. 支持第三方绑定与解绑及查询接口.
         5. 支持一键登录.
         6. 支持对 Authentication 与 UserDetails 的 Jackson2 反序列化设置(Auth2Jackson2Module)
+        7. 针对公司政策，不能直连外网，需要申请转发端口，走ng代理，新增url属性，使支持路径可配置
     </description>
 
     <url>https://github.com/ZeroOrInfinity/justAuth-spring-boot-security-starter</url>
@@ -142,15 +143,29 @@
 
     </dependencies>
 
+<!--    <distributionManagement>-->
+<!--        <snapshotRepository>-->
+<!--            <id>ossrh</id>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>ossrh</id>-->
+<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
+
+    <!--私服上传配置-->
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>releases</id>
+            <name>Nexus ReleaseRepository</name>
+            <url>http://192.168.66.40:22081/repository/maven-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Nexus SnapshotsRepository</name>
+            <url>http://192.168.66.40:22081/repository/maven-snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <properties>
@@ -164,7 +179,7 @@
         <spring-security.version>5.4.1</spring-security.version>
 
         <commons-pool2.version>2.8.1</commons-pool2.version>
-        <just-auth.version>1.16.3</just-auth.version>
+        <just-auth.version>1.16.4</just-auth.version>
         <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
         <org.projectlombok.version>1.18.12</org.projectlombok.version>
         <servlet-api.version>3.0-alpha-1</servlet-api.version>
@@ -242,7 +257,7 @@
                         <version>1.6.7</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
+                            <serverId>releases</serverId>
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                             <stagingProgressTimeoutMinutes>30</stagingProgressTimeoutMinutes>
@@ -333,7 +348,7 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
+                    <!--<plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.6</version>
@@ -342,12 +357,12 @@
                                 <id>sign-artifacts</id>
                                 <phase>verify</phase>
                                 <goals>
-                                    <!--suppress MybatisMapperXmlInspection -->
+                                    &lt;!&ndash;suppress MybatisMapperXmlInspection &ndash;&gt;
                                     <goal>sign</goal>
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin>-->
 
                 </plugins>
             </build>
